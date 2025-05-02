@@ -4,5 +4,5 @@ curl --request POST \
   --data '{
     "username": "newuser",
     "password": "securepassword",
-    "email": "example3@email.com"
+    "email": "example10@email.com"
     }'
