@@ -1,4 +1,5 @@
 import { Sequelize, DataTypes } from "sequelize";
+import bcrypt from "bcrypt";
 
 const sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -28,6 +29,11 @@ const User = sequelize.define("User", {
         type: DataTypes.STRING,
         allowNull: false,
     },
-})
+});
+
+User.beforeCreate(async (user) => {
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
+});
 
 export default User;
