@@ -6,6 +6,15 @@ const pool = new Pool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-})
+});
 
-export default pool;
+const connect = async () => {
+    try {
+        await pool.connect();
+        console.log("Connected to the database successfully!");
+    } catch (error) {
+        console.error("Error connecting to the database:", error);
+    }
+};
+
+export default {pool, connect};
