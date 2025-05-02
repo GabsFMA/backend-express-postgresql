@@ -22,7 +22,11 @@ router.post(
         const { username, email, password } = req.body;
         try {
             const result = await registerUser(username, email, password);
-            res.status(201).json(result);
+            res.status(201).json({
+                message: "Usuário registrado com sucesso!",
+                user: result.user,
+                token: result.token,
+            });
         } catch (error) {
             res.status(400).json({ error: error.message });
         }
@@ -44,7 +48,11 @@ router.post(
         const { email, password } = req.body;
         try {
             const result = await loginUser(email, password);
-            res.status(200).json(result);
+            res.status(200).json({
+                message: "Login bem-sucedido!",
+                user: result.user,
+                token: result.token,
+            });
         } catch (error) {
             res.status(400).json({ error: error.message });
         }
