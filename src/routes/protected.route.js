@@ -1,9 +1,9 @@
 import express from "express";
-import { authenticateToken } from "../middlewares/authMiddleware.js";
+import { authenticateToken } from "../middleware/jwt.token.middleware.js";
 
 const router = express.Router();
 
-router.get("/protected", authenticateToken, (req, res) => {
+router.get("/", authenticateToken, (req, res) => {
     res.status(200).json({ message: "Acesso autorizado!" });
 });
 

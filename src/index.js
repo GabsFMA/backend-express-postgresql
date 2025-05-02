@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
+import protectedRoutes from "./routes/protected.route.js";
 import createUsersTable from "./database/initDatabase.js";
 
 dotenv.config();
@@ -12,6 +13,8 @@ app.use(express.json());
 createUsersTable();
 
 app.use("/users", userRoutes);
+
+app.use("/protected", protectedRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
