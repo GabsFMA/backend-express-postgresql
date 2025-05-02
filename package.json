@@ -13,9 +13,9 @@
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "src/index.js",
+  "main": "api/index.js",
   "scripts": {
-    "dev": "nodemon src/index.js",
+    "dev": "nodemon api/index.js",
     "start": "docker compose up -d",
     "generate-secret-key": "node -e \"console.log(require('crypto').randomBytes(32).toString('hex'))\""
   },
